@@ -16,6 +16,13 @@ const Post = () => {
   const { id } = router.query;
   const { singlePost } = useSelector((state) => state.post);
 
+  /**
+   * getStaticPaths
+   */
+  // if (router.isFallback) {
+  //   return <div>로딩중...</div>;
+  // }
+
   return (
     <AppLayout>
       <Head>
@@ -40,6 +47,24 @@ const Post = () => {
     </AppLayout>
   );
 };
+
+/**
+ * fallback: (boolean)
+ * - true : 없는 게시물이면 getStaticProps를 통해 해당 게시물을 불러옴(위의 isFallback 상태 확인 후 재랜더)
+ * - false : 없는 게시물이면 에러로 리턴 됨
+ *
+ * getStaticPaths는 미리 html로 서버사이드 랜더링을 해놓기 때문에 적정량의 페이지를 랜더링 해놓을 때 사용하는게 좋음
+ */
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { id: '1' } },
+//       { params: { id: '3' } },
+//       { params: { id: '4' } },
+//     ],
+//     fallback: true,
+//   };
+// }
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {

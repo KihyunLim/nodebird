@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import shortId from 'shortid';
 import produce from 'immer';
 import faker from 'faker';
@@ -232,8 +233,6 @@ const reducer = (state = initialState, action) => {
         draft.loadPostsLoading = false;
         draft.loadPostsDone = true;
         draft.hasMorePosts = action.data.length === 10;
-        console.log('###############');
-        console.log(draft.mainPosts);
         break;
       case LOAD_USER_POSTS_FAILURE:
       case LOAD_HASHTAG_POSTS_FAILURE:

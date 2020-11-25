@@ -12,6 +12,8 @@ npm i react-slick
 - 이미지 슬라이드 라이브러리
 npm i redux-saga next-redux-saga
 - next-redux-saga는 나중에 안쓰긴 함
+npm i swr
+- 통신 요청 시 request를 간소화 해줌
 npm i immer
 - 불변성 법칙 관련 코드 쉽게 처리
 npm i axios

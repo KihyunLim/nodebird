@@ -15,7 +15,6 @@ const Hashtag = () => {
   const router = useRouter();
   const { tag } = router.query;
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => {
-    console.log(state.post);
     return state.post;
   });
 
@@ -67,6 +66,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       data: context.params.tag,
     });
     context.store.dispatch(END);
+    await context.store.sagaTask.toPromise();
   }
 );
 
