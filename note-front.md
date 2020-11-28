@@ -17,6 +17,18 @@ npm i swr
 npm i immer
 - 불변성 법칙 관련 코드 쉽게 처리
 npm i axios
+npm i moment
+- 날짜 관련 라이브러리
+npm i @next/bundle-analyzer
+- 빌드 시 First Load JS로 용량 큰거 분석해주는 용도
+- 폴더 당 1MB를 넘으면 모바일에선 버벅일 수 있음
+npm i compression-webpack-plugin
+- html, js 같은 파일을 gzip으로 압축해서 용량을 줄여줌
+- next.config.js에서 compress: true로 설치하지 않고 추가할 수 있게 변경 됨
+npm i cross-env
+- "build": "ANALYZE=true NODE_ENV=production next build"를 사용할 수 있게 해줌
+- "build": "cross-env ANALYZE=true NODE_ENV=production next build"로 수정하면 됨
+- 원래는 맥이나 리눅스에서만 됨
 npm i shortid
 - 랜덤으로 id 생성
 npm i faker
