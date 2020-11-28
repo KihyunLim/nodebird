@@ -19,7 +19,7 @@ class MyDocument extends Document {
         styles: (
           <>
             {initialProps.styles}
-            {sheet.getStyleElements()}
+            {sheet.getStyleElement()}
           </>
         ),
       };
