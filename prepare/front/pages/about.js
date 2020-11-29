@@ -48,13 +48,13 @@ const About = () => {
 };
 
 // 자주 변경이 되지 않을 페이지에 사용
-export const getStaticProps = wrapper.getStaticProps(async (context) => {
+/* export const getStaticProps = wrapper.getStaticProps(async (context) => {
   context.store.dispatch({
     type: LOAD_USER_REQUEST,
     data: 1,
   });
   context.store.dispatch(END);
   await context.store.sagaTask.toPromise();
-});
+}); */
 
 export default About;
