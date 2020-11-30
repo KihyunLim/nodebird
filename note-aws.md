@@ -31,4 +31,8 @@ mysql -uroot -p
 
 back폴더에서
  - vim .env 생성 후 비밀번호 작성 (위의 비밀번호와 동일하게 설정해야함)
+ - vim app.js 맨 하단의 포트 번호 변경 : 3065 > 80
+
 npm start
+
+back instance의 public ip 복사해서 주소줄에 입력하면 'hello express'로 루트로 입력해둿던 응답 돌아오는거 확인 가능
