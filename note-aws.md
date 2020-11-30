@@ -25,4 +25,10 @@ sudo su
 mysql_secure_installation 
 - 비번 설정 같은거 함
 mysql -uroot -p
-- mysql 실행
+- mysql 실행 후 버전 확인
+  - 비밀번호 재설정 : ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Nodebird2@';
+  - 비밀번호 강도 확인 : SHOW VARIABLES LIKE 'validate_password%' - 최소 8자, 대/소/숫자/특수 포함
+
+back폴더에서
+ - vim .env 생성 후 비밀번호 작성 (위의 비밀번호와 동일하게 설정해야함)
+npm start
