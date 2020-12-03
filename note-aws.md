@@ -58,3 +58,7 @@ npx pm2 start app.js
 npx pm2 reload all
 - 리스트에 있는 서버 모두 재시작
 **1023 이하의 포트는 sudo를 사용하여 루트 권한으로 실행해야 한다.**
+
+sudo lsof -i tcp:[port번호]
+- 실행되고 있는 포트 번호 확인
+sudo npx pm2 kill
