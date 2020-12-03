@@ -11,6 +11,7 @@ git clone [prepare있는 깃 주소]
 node -v, npm -v 로 설치 확인
 npm i 로 소스 받기
   - git pull : 커밋된 소스 있으면 최신화
+    - Aborting 관련 에러 뜨면 git reset --hard 후 git pull
 
 front에서 빌드
 npm run build
@@ -36,3 +37,24 @@ back폴더에서
 npm start
 
 back instance의 public ip 복사해서 주소줄에 입력하면 'hello express'로 루트로 입력해둿던 응답 돌아오는거 확인 가능
+
+npm i pm2
+- node app(=> npm start)로 서버 실행하다 `ctrl + c`로 나가면 서버도 같이 종료 됨(foreground process)
+- 위를 방지하기 위해 background process 방식으로 실행 시켜줘야 함(node app $ 로 실행해도 되지만 pm2가 편리함)
+package.json의 npm start 수정
+- `cross-env NODE_ENV=production pm2 start app.js`로 수정 (npm i pm2 cross-env helmet hpp)
+sudo npm start && sudo npx pm2 monit
+- background process로 서버 실행 확인 가능
+- 서버 모니터링 명령어
+npx pm2 kill
+- 서버 종료 명령어
+npx pm2 logs
+npx pm2 logs -error
+- 에러 로그 확인 명령어
+npx pm2 list
+- 실행중인 프로세스 리스트
+npx pm2 start app.js
+- app.js 실행
+npx pm2 reload all
+- 리스트에 있는 서버 모두 재시작
+**1023 이하의 포트는 sudo를 사용하여 루트 권한으로 실행해야 한다.**

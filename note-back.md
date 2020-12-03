@@ -59,6 +59,8 @@ npm i morgan
 npm i multer
 - multpart/form-data 처리
 
+npm i pm2 cross-env helmet hpp
+
 ---
 
 utf8mb4 : 이모티콘을 넣을 수 있는 글자 형식
