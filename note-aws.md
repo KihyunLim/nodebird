@@ -63,6 +63,9 @@ sudo lsof -i tcp:[port번호]
 - 실행되고 있는 포트 번호 확인
 sudo npx pm2 kill
 
+**Error: listen EADDRINUSE: address already in use :::80** 
+node가 프로세스 계속 사용 중이면 killall -9 node
+
 
 
 front 폴더에서

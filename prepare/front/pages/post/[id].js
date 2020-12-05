@@ -10,6 +10,7 @@ import { LOAD_POST_REQUEST } from '../../reducers/post';
 import wrapper from '../../store/configureStore';
 import AppLayout from '../../components/AppLayout';
 import PostCard from '../../components/PostCard';
+import { backUrl } from '../../config/config';
 
 const Post = () => {
   const router = useRouter();
@@ -38,10 +39,10 @@ const Post = () => {
           content={
             singlePost.Images[0]
               ? singlePost.Images[0].src
-              : 'https://nodebird.com/favicon.ico'
+              : `${backUrl}/favicon.ico`
           }
         />
-        <meta property="og:url" content={`https://nodebird.com/post/${id}`} />
+        <meta property="og:url" content={`${backUrl}/post/${id}`} />
       </Head>
       <PostCard post={singlePost} />
     </AppLayout>
