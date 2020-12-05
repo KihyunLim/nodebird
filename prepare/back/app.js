@@ -31,16 +31,22 @@ if (process.env.NODE_ENV === 'production') {
   app.use(morgan('combined')); // 로그를 더 자세하게 보여줌
   app.use(hpp());
   app.use(helmet());
+  app.use(
+    cors({
+      origin: 'http://khlim.site', // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
+      credentials: true, // 쿠키가 서버로 전달되는데 cors 걸리지 않도록 해 줌
+    })
+  );
 } else {
   app.use(morgan('dev'));
+  app.use(
+    cors({
+      origin: true, // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
+      credentials: true, // 쿠키가 서버로 전달되는데 cors 걸리지 않도록 해 줌
+    })
+  );
 }
 
-app.use(
-  cors({
-    origin: ['http://localhost:3000', 'nodebird.com', 'http://3.35.3.22'], // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
-    credentials: true, // 쿠키가 서버로 전달되는데 cors 걸리지 않도록 해 줌
-  })
-);
 app.use('/', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -50,6 +56,11 @@ app.use(
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      domain: process.env.NODE_ENV === 'production' && '.nodebird.com',
+    },
   })
 );
 app.use(passport.initialize());
