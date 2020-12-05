@@ -102,3 +102,9 @@ npm i redux-thunk
 npm rm redux-thunk
 - redux에서 dispatch를 여러개 사용할 수 있도록 해줌
 - saga를 대부분 사용해서 많이들 사용을 하진 않음
+
+
+---
+aws에서 사용
+
+npm i pm2
