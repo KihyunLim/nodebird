@@ -62,3 +62,12 @@ npx pm2 reload all
 sudo lsof -i tcp:[port번호]
 - 실행되고 있는 포트 번호 확인
 sudo npx pm2 kill
+
+
+
+front 폴더에서
+
+npm run build
+- 백은 안해도 프론트는 빌드를 해줘야 함
+sudo npx pm2 start npm -- start
+- pm2를 이용해서 프론트 서버 실행

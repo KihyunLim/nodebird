@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'nodebird.com'], // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
+    origin: ['http://localhost:3000', 'nodebird.com', 'http://3.35.3.22'], // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
     credentials: true, // 쿠키가 서버로 전달되는데 cors 걸리지 않도록 해 줌
   })
 );
