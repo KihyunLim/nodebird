@@ -91,3 +91,20 @@ lambda 폴더에서
 npm init
 npm i aws-sdk sharp
 - sharp : 이미지 리사이즈 기능 제공
+
+index.js 파일 작성 후 커밋
+
+ssh 접속해서 
+git pull 후 sudo npm i (에러나면 sudo su로 하고도 sudo 붙이면 됨)
+apt install zip
+zip -r aws-upload.zip ./*
+- aws-upload.zip 파일 생성 됨
+- ec2에서 s3로 압축 파일 전송 하기 위함
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+- awscliv2.zip 파일 생성 됨
+unzip awscliv2.zip
+./aws/install
+aws configure
+- key id, access key, region 복붙
+- format : json
+aws s3 cp "aws-upload.zip" s3://react-nodebird-s3-khlim
