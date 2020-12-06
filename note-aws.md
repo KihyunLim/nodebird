@@ -66,6 +66,10 @@ sudo npx pm2 kill
 **Error: listen EADDRINUSE: address already in use :::80** 
 node가 프로세스 계속 사용 중이면 killall -9 node
 
+npm i multer-s3 aws-sdk
+- multer-s3 : multer를 통해 s3로 올릴 때 사용
+- aws-sdk : aws 접근 권한 얻기 위해 사용
+
 
 
 front 폴더에서
