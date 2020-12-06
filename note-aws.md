@@ -108,3 +108,12 @@ aws configure
 - key id, access key, region 복붙
 - format : json
 aws s3 cp "aws-upload.zip" s3://react-nodebird-s3-khlim
+
+lambda 폴더 수정 시
+rm aws-upload.zip
+rm -rf aws
+zip -r aws-upload.zip ./*
+aws s3 cp "aws-upload.zip" s3://react-nodebird-s3-khlim
+페이지 s3에서 aws-upload.zip 확인
+페이지 lambda에서 함수 코드 주소 입력 후 저장
+- https://react-nodebird-s3-khlim.s3.ap-northeast-2.amazonaws.com/aws-upload.zip
