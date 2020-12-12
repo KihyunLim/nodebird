@@ -27,13 +27,14 @@ db.sequelize
 
 passportConfig();
 
+app.set('trust proxy', 1);
 if (process.env.NODE_ENV === 'production') {
   app.use(morgan('combined')); // 로그를 더 자세하게 보여줌
   app.use(hpp());
   app.use(helmet());
   app.use(
     cors({
-      origin: 'http://khlim.site', // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
+      origin: 'https://khlim.site', // true로 설정 시 보낸 곳의 주소가 자동으로 입력 됨
       credentials: true, // 쿠키가 서버로 전달되는데 cors 걸리지 않도록 해 줌
     })
   );
@@ -58,7 +59,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === 'production' ? true : false,
       domain: process.env.NODE_ENV === 'production' && '.khlim.site',
     },
   })
@@ -79,6 +80,7 @@ app.use('/posts', postsRouter);
 app.use('/user', userRouter);
 app.use('/hashtag', hashtagRouter);
 
-app.listen(80, () => {
+app.listen(3065, () => {
+  // app.listen(80, () => {
   console.log('서버 실행 중!');
 });
