@@ -27,8 +27,8 @@ db.sequelize
 
 passportConfig();
 
-app.set('trust proxy', 1);
 if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
   app.use(morgan('combined')); // 로그를 더 자세하게 보여줌
   app.use(hpp());
   app.use(helmet());
