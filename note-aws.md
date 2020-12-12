@@ -117,3 +117,47 @@ aws s3 cp "aws-upload.zip" s3://react-nodebird-s3-khlim
 페이지 s3에서 aws-upload.zip 확인
 페이지 lambda에서 함수 코드 주소 입력 후 저장
 - https://react-nodebird-s3-khlim.s3.ap-northeast-2.amazonaws.com/aws-upload.zip
+
+
+
+nginx 설치 (https 적용)
+- 포트를 443이면 그냥 보내고, 80으로 들어오면 443으로 변환해줌
+
+front 서버에서
+apt-get install nginx
+vim /etc/nginx/nginx.conf
+- `# Virtual Host Configs`의 include 밑에 아래 코드 추가
+```
+  server {
+          server_name [서버주소];
+          listen 80;
+          location / {
+                  proxy_set_header HOST $host;
+                  proxy_pass http://127.0.0.1:3060;
+                  proxy_redirect off;
+          }
+  }
+```
+
+https 인증서 발급 (https://letsencrypt.org/ko/)
+- 3개월짜리 무료 인증서, 3개월마다 갱신 필요 (자동 갱신 가능)
+wget https://dl.eff.org/certbot-auto
+chmod a+x certbot-auto
+- 모든 유저한테 certbot 실행 권한 부여
+./certbot-auto
+- 에러(certbot-auto has insecure permissions!)난다면 아래 명령어로 재시도 (https://www.zerocho.com/category/NodeJS/post/5ef450a5701d8a001f84baeb)
+  - snap install certbot --classic
+  - apt-get install nginx
+  - certbot --nginx
+- 메일 물어보면 3개월 갱신 알림오는거기 때문에 정확한 입력 필요
+vim /etc/nginx/nginx.conf
+- `# Virtual Host Configs`의 include 밑에 추가한 코드 이후 새로 추가된 코드 확인 가능
+systemctl restart nginx
+vim package.json
+- `start`의 포트를 80에서 3060으로 수정
+
+사이트 들어가 보면 https로 변경된거 확인 가능
+- back도 동일한 방법으로 진행
+  - 서버주소 : api.[서버주소]
+  - nginx.conf의 추가한 코드에 https >>> http로 수정
+  - systemctl restart nginx
