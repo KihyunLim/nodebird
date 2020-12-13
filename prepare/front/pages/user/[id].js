@@ -20,7 +20,7 @@ const User = () => {
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector(
     (state) => state.post
   );
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo, me } = useSelector((state) => state.user);
 
   useEffect(() => {
     const onScroll = () => {
@@ -69,8 +69,9 @@ const User = () => {
           <meta property="og:url" content={`${backUrl}/user/${id}`} />
         </Head>
       )}
-      {userInfo ? (
+      {userInfo && userInfo.id !== me?.id ? (
         <Card
+          style={{ margineBottom: 20 }}
           actions={[
             <div key="twit">
               짹짹

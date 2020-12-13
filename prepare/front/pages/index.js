@@ -61,7 +61,9 @@ const Home = () => {
 // 변경이 빈번한 페이지에서 사용
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
+    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@1');
     console.log(context);
+    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2');
 
     const cookie = context.req ? context.req.headers.cookie : '';
     axios.defaults.headers.Cookie = '';
